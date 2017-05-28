@@ -46,7 +46,7 @@
                     }
 
                     res.forEach(function(file) {
-                        console.log(file.hash);
+                        document.write("<a href='http://ipfs.io/ipfs" + file.hash + "' target='_blank' id='link'>" + file.hash + "</a>");
                     });
 
                 });
