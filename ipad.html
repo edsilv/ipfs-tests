@@ -43,10 +43,14 @@
                 console.log('Online status: ', node.isOnline() ? 'online' : 'offline');
                 
                 var data = {
-                    hello: "ipfs"
+                    test: Date.now() + Math.random()
                 }
 
-                node.files.add(Buffer.from(JSON.stringify(data)), function (err, res) {
+                var stringified = JSON.stringify(data);
+
+                console.log(stringified);
+
+                node.files.add(Buffer.from(stringified), function (err, res) {
             
                     console.log("added");
                 
