@@ -3,14 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>JS Bin</title>
+  <title>IPFS iPad Test</title>
   <script src="https://unpkg.com/ipfs-api/dist/index.min.js"></script>
   <script src="https://unpkg.com/ipfs/dist/index.min.js"></script>
 </head>
 <body>
+
+    <p id="useragent"></p>
+
+    <p id="link"></p>
+
     <script>
 
-        document.write(navigator.userAgent);
+        var userAgentElem = document.getElementById('useragent');
+        userAgentElem.appendChild(document.createTextNode(navigator.userAgent ));
 
         var Buffer = window.IpfsApi().Buffer;
 
@@ -49,7 +55,13 @@
                     }
 
                     res.forEach(function(file) {
-                        document.write("<a href='http://ipfs.io/ipfs/" + file.hash + "' target='_blank' id='link'>" + file.hash + "</a>");
+                        var linkElem = document.getElementById("link");
+                        var aTag = document.createElement('a');
+                        aTag.setAttribute('href', "http://ipfs.io/ipfs/" + file.hash);
+                        aTag.setAttribute('target',"_blank");
+                        aTag.setAttribute('id',"link");
+                        aTag.innerHTML = file.hash;
+                        linkElem.appendChild(aTag);
                     });
 
                 });
