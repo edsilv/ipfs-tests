@@ -20,13 +20,21 @@
 
         var Buffer = window.IpfsApi().Buffer;
 
-        var repoPath = 'ipfs-' + Math.random();
+        // var repoPath = 'ipfs-' + Math.random();
 
-        // Create an IPFS node
-        var node = new Ipfs({
-            init: false,
-            start: false,
-            repo: repoPath
+        // // Create an IPFS node
+        // var node = new Ipfs({
+        //     init: false,
+        //     start: false,
+        //     repo: repoPath
+        // });
+
+        const node = new Ipfs({
+            config: {
+                Addresses: {
+                    Swarm: []
+                }
+            }
         });
 
         // Init the node
